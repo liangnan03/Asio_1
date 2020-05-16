@@ -3,3 +3,5 @@
 *.obj
 *.dll
 *.exe
+
+boost\lib\cmake\*
