@@ -5,3 +5,9 @@
 *.exe
 
 boost\lib\cmake\*
+
+asio/asio.VC.VC.opendb
+asio/asio/x64/Debug/asio.pch
+asio/asio/x64/Debug/asio.tlog/*
+asio/asio/x64/Debug/vc140.idb
+asio/x64/*
