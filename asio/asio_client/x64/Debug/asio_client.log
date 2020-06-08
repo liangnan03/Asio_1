@@ -1,3 +1,14 @@
-﻿  asio_client.cpp
+﻿  stdafx.cpp
+  asio_client.cpp
+c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(5): warning C4603: 'BOOST_FILESYSTEM_NO_DEPRECATED': macro is not defined or definition is different after precompiled header use
+  c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(5): note: Add macro to precompiled header instead of defining here
+  c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(9): note: use of precompiled header
+c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(6): warning C4603: 'BOOST_FILESYSTEM_DYN_LINK': macro is not defined or definition is different after precompiled header use
+  c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(6): note: Add macro to precompiled header instead of defining here
+  c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(9): note: use of precompiled header
+c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(7): warning C4603: 'BOOST_FILESYSTEM_NO_LIB': macro is not defined or definition is different after precompiled header use
+  c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(7): note: Add macro to precompiled header instead of defining here
+  c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(9): note: use of precompiled header
+c:\users\alex.liang\documents\github\asio_1\asio\asio_client\asio_client.cpp(65): warning C4244: 'initializing': conversion from 'std::streamsize' to 'int', possible loss of data
   asio_client.vcxproj -> C:\Users\alex.liang\Documents\GitHub\Asio_1\asio\x64\Debug\asio_client.exe
   asio_client.vcxproj -> C:\Users\alex.liang\Documents\GitHub\Asio_1\asio\x64\Debug\asio_client.pdb (Full PDB)

@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  asio_client.cpp
+asio_client.cpp(65): warning C4244: 'initializing': conversion from 'std::streamsize' to 'int', possible loss of data
+asio_client.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) void __cdecl boost::filesystem::path_traits::convert(char const *,char const *,class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> > &,class std::codecvt<wchar_t,char,struct _Mbstatet> const &)" (__imp_?convert@path_traits@filesystem@boost@@YAXPEBD0AEAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@AEBV?$codecvt@_WDU_Mbstatet@@@5@@Z)
+asio_client.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: static class std::codecvt<wchar_t,char,struct _Mbstatet> const & __cdecl boost::filesystem::path::codecvt(void)" (__imp_?codecvt@path@filesystem@boost@@SAAEBV?$codecvt@_WDU_Mbstatet@@@std@@XZ)
+C:\Users\alex.liang\Documents\GitHub\Asio_1\asio\x64\Release\asio_client.exe : fatal error LNK1120: 2 unresolved externals

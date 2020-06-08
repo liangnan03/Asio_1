@@ -1,15 +1,30 @@
 // asio_client.cpp : Defines the entry point for the console application.
 //
 
+
+#define BOOST_FILESYSTEM_NO_DEPRECATED
+#define BOOST_FILESYSTEM_DYN_LINK
+#define BOOST_FILESYSTEM_NO_LIB
+
 #include "stdafx.h"
 
 
 #include <iostream>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+using namespace boost::filesystem;
+
+
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <boost/asio.hpp>
 
 using boost::asio::ip::tcp;
 
+enum { max_length = 1024 };
 
 //int main()
 //{
@@ -20,39 +35,57 @@ int main(int argc, char* argv[])
 {
 	try
 	{
-		if (argc != 2)
-		{
-			std::cerr << "Usage: client <host>" << std::endl;
-			return 1;
-		}
+		//if (argc != 3)
+		//{
+		//	std::cerr << "Usage: blocking_tcp_echo_client <host> <port>\n";
+		//	return 1;
+		//}
+		char buf[512] = { 0 };
+		boost::filesystem::fstream rf("C:\\Users\\alex.liang\\Documents\\aws.pdf", (boost::filesystem::fstream::in | boost::filesystem::fstream::binary));
 
 		boost::asio::io_context io_context;
 
 		tcp::resolver resolver(io_context);
-		tcp::resolver::results_type endpoints = resolver.resolve(argv[1], "daytime");
+		tcp::resolver::results_type endpoints =
+			resolver.resolve(tcp::v4(), "192.168.3.92", "63333");
 
-		tcp::socket socket(io_context);
-		boost::asio::connect(socket, endpoints);
+		tcp::socket s(io_context);
+		boost::asio::connect(s, endpoints);
 
-		for (;;)
+		//using namespace std; // For strlen.
+		//std::cout << "Enter message: ";
+		//char request[max_length];
+		//std::cin.getline(request, max_length);
+		//size_t request_length = strlen(request);
+		while (1)
 		{
-			boost::array<char, 128> buf;
-			boost::system::error_code error;
-
-			size_t len = socket.read_some(boost::asio::buffer(buf), error);
-
-			if (error == boost::asio::error::eof)
-				//break; // Connection closed cleanly by peer.
-				;
-			else if (error)
-				throw boost::system::system_error(error); // Some other error.
-
-			std::cout.write(buf.data(), len);
+			if (rf.eof())
+				break;
+			rf.read(buf, 512);
+			int nBytesRead = rf.gcount();
+			if (nBytesRead <= 0)
+				break;
+			
+			boost::asio::write(s, boost::asio::buffer(buf, nBytesRead));
 		}
+		
+		
+
+		//char reply[max_length];
+		//size_t reply_length = boost::asio::read(s,
+			//boost::asio::buffer(reply, request_length));
+		//std::cout << "Reply is: ";
+		//std::cout.write(reply, reply_length);
+		//std::cout << "\n";
+
+		//s.close();
+		int abc;
+		std::cin >> abc;
+		rf.close();
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Exception: " << e.what() << "\n";
 	}
 
 	return 0;
